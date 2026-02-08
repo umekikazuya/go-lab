@@ -41,5 +41,3 @@ formatters:
     - goimports
   exclusions:
     generated: lax
-   exclusions:
-     generated: lax
