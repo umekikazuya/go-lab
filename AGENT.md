@@ -39,6 +39,8 @@ First, draft the GitHub Issue content following the IMRaD format below. You must
 | Metric | Pattern A | Pattern B | Diff |
 | :--- | :--- | :--- | :--- |
 | Size | 24 B | 16 B | -33% |
+| Allocs/op | 3 | 1 | -66% |
+| ns/op | 150 | 100 | -33% |
 
 ## 3. Methods
 
