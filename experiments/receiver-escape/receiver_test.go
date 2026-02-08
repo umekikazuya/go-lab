@@ -218,11 +218,18 @@ func BenchmarkXLargePointerNoInline(b *testing.B) {
 // Interface variants — dynamic dispatch forces heap escape
 // ===========================================================================
 
-// callViaInterface prevents the compiler from devirtualizing the call.
+// callViaInterface dispatches Sum() through the Sumer interface (value receiver path).
 //
 //go:noinline
 func callViaInterface(s Sumer) float64 {
 	return s.Sum()
+}
+
+// callViaPInterface dispatches PSum() through the PSumer interface (pointer receiver path).
+//
+//go:noinline
+func callViaPInterface(s PSumer) float64 {
+	return s.PSum()
 }
 
 // ---------------------------------------------------------------------------
@@ -239,7 +246,7 @@ func BenchmarkSmallValueIface(b *testing.B) {
 func BenchmarkSmallPointerIface(b *testing.B) {
 	s := &Small{X: 1.0, Y: 2.0, Z: 3.0}
 	for b.Loop() {
-		sink = callViaInterface(s)
+		sink = callViaPInterface(s)
 	}
 }
 
@@ -263,7 +270,7 @@ func BenchmarkMediumPointerIface(b *testing.B) {
 		m.Data[i] = float64(i)
 	}
 	for b.Loop() {
-		sink = callViaInterface(m)
+		sink = callViaPInterface(m)
 	}
 }
 
@@ -287,7 +294,7 @@ func BenchmarkLargePointerIface(b *testing.B) {
 		l.Data[i] = float64(i)
 	}
 	for b.Loop() {
-		sink = callViaInterface(l)
+		sink = callViaPInterface(l)
 	}
 }
 
@@ -311,6 +318,6 @@ func BenchmarkXLargePointerIface(b *testing.B) {
 		x.Data[i] = float64(i)
 	}
 	for b.Loop() {
-		sink = callViaInterface(x)
+		sink = callViaPInterface(x)
 	}
 }

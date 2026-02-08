@@ -1,9 +1,15 @@
 package receiver
 
-// Sumer is an interface to force dynamic dispatch, preventing inlining
-// and causing the receiver to escape to the heap.
+// Sumer is an interface satisfied by value receivers.
+// Used to force dynamic dispatch and observe escape behavior of value types.
 type Sumer interface {
 	Sum() float64
+}
+
+// PSumer is an interface satisfied only by pointer receivers.
+// Used to force dynamic dispatch and observe escape behavior of pointer types.
+type PSumer interface {
+	PSum() float64
 }
 
 // Small is a 24-byte struct (3 x float64).
