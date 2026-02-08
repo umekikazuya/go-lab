@@ -63,6 +63,9 @@ First, draft the GitHub Issue content following the IMRaD format below. You must
   1. Create directory: `experiments/topic-name/`
   2. Initialize module: `go mod init go-lab/experiments/topic-name`
   3. Add to workspace: `go work use ./experiments/topic-name`
+- **Branch Strategy**:
+  - Create a new branch for each experiment: `exp/{issue-id}-{topic-kebab-case}`.
+  - Example: `exp/1-struct-padding`.
 
 ## 4. Communication Style
 
