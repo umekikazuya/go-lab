@@ -18,4 +18,6 @@ code_generation:
 issue_enrichment:
   auto_enrich:
     enabled: true
-
+issue_enrichment:
+  auto_enrich:
+    enabled: true
