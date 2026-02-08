@@ -21,18 +21,26 @@ First, draft the GitHub Issue content following the IMRaD format below. You must
 ### Context
 
 <Explain the internal mechanism related to the topic>
+
 ### Objective
+
 <What exactly do we want to measure?>
 
 ## 2. Hypothesis
 
 ### Hypothesis
 
-<Prediction based on Go runtime/compiler behavior>
+<Provide concrete Go code examples comparing "Bad" vs "Good" patterns.>
+(e.g., Show struct definitions with expected padding comments)
 
 ### Expected Outcome
 
-<Quantitative prediction (e.g., "30% slower", "Zero allocation")>
+<Prediction table comparing metrics (Size, Allocs, ns/op)>
+| Metric | Pattern A | Pattern B | Diff |
+| :--- | :--- | :--- | :--- |
+| Size | 24 B | 16 B | -33% |
+| Allocs/op | 3 | 1 | -66% |
+| ns/op | 150 | 100 | -33% |
 
 ## 3. Methods
 
