@@ -21,7 +21,7 @@ func (s Small) Sum() float64   { return s.X + s.Y + s.Z }
 func (s *Small) PSum() float64 { return s.X + s.Y + s.Z }
 
 //go:noinline
-func (s Small) SumNoInline() float64   { return s.X + s.Y + s.Z }
+func (s Small) SumNoInline() float64 { return s.X + s.Y + s.Z }
 
 //go:noinline
 func (s *Small) PSumNoInline() float64 { return s.X + s.Y + s.Z }
