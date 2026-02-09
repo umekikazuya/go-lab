@@ -17,4 +17,4 @@ code_generation:
     language: ja-JP
 issue_enrichment:
   auto_enrich:
-    enabled: true
+    enabled: false
