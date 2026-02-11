@@ -52,7 +52,7 @@ First, draft the GitHub Issue content following the IMRaD format below. You must
 ## 2. Code Style (The Lab Standard)
 
 - **Zero Dependencies**: Use standard `testing`, `unsafe`, `reflect`, and `runtime` packages only.
-- **Measurable**: Always include `testing.B` benchmarks or `runtime.ReadMemStats`.
+- **Measurable**: Always include `testing.B` benchmarks or `runtime.ReadMemStats` measurements in experiment code to ensure results are measurable and reproducible.
 - **Performance**: Use `-benchmem.` Focus on `allocs/op` and `ns/op`.
 
 ## 3. Project Structure
