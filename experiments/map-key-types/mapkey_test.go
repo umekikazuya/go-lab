@@ -139,50 +139,17 @@ func BenchmarkLookup_IntPairKey(b *testing.B) {
 }
 
 // ---------------------------------------------------------------------------
-// Benchmarks: Lookup (pre-built keys — isolate pure map access cost)
+// Benchmarks: Lookup (pre-built key — isolate pure map access cost for string)
 // ---------------------------------------------------------------------------
+// Only string keys benefit from this separation.
+// Struct keys have near-zero construction cost, so splitting them
+// would just add slice-iteration noise without isolating anything.
 
 func BenchmarkLookupPrebuilt_StringKey(b *testing.B) {
 	keys := make([]string, mapSize)
 	m := make(map[string]int, mapSize)
 	for i := range mapSize {
 		k := StringKey(i, "abc")
-		keys[i] = k
-		m[k] = i
-	}
-	b.ResetTimer()
-	for b.Loop() {
-		var acc int
-		for _, k := range keys {
-			acc += m[k]
-		}
-		sink = acc
-	}
-}
-
-func BenchmarkLookupPrebuilt_CompositeKey(b *testing.B) {
-	keys := make([]CompositeKey, mapSize)
-	m := make(map[CompositeKey]int, mapSize)
-	for i := range mapSize {
-		k := CompositeKey{ID: i, Code: "abc"}
-		keys[i] = k
-		m[k] = i
-	}
-	b.ResetTimer()
-	for b.Loop() {
-		var acc int
-		for _, k := range keys {
-			acc += m[k]
-		}
-		sink = acc
-	}
-}
-
-func BenchmarkLookupPrebuilt_IntPairKey(b *testing.B) {
-	keys := make([]IntPairKey, mapSize)
-	m := make(map[IntPairKey]int, mapSize)
-	for i := range mapSize {
-		k := IntPairKey{X: i, Y: i * 7}
 		keys[i] = k
 		m[k] = i
 	}
