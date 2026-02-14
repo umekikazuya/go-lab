@@ -12,6 +12,9 @@ reviews:
     drafts: true
     base_branches:
       - main
+  tools:
+    golangci-lint:
+      enabled: false
 code_generation:
   docstrings:
     language: ja-JP
