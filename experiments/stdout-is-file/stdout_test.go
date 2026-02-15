@@ -108,6 +108,7 @@ func TestRedirection(t *testing.T) {
 	w.Close()
 
 	buf, err := io.ReadAll(r)
+	r.Close()
 	if err != nil {
 		t.Fatal(err)
 	}
