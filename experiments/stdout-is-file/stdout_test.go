@@ -119,6 +119,36 @@ func TestRedirection(t *testing.T) {
 	t.Logf("fmt.Println wrote to pipe: %q", got)
 }
 
+// TestRedirectionToFile proves that os.Stdout can be replaced with
+// a regular disk file. fmt.Println writes to that file, and the
+// content can be read back — the most direct proof that stdout
+// is "just a writable file".
+func TestRedirectionToFile(t *testing.T) {
+	orig := os.Stdout
+	defer func() { os.Stdout = orig }()
+
+	path := t.TempDir() + "/stdout.txt"
+	f, err := os.Create(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	os.Stdout = f
+	fmt.Println("written to file")
+	f.Close()
+
+	content, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	got := string(content)
+	want := "written to file\n"
+	if got != want {
+		t.Fatalf("file content: got %q, want %q", got, want)
+	}
+	t.Logf("fmt.Println wrote to disk file: %q", got)
+}
+
 // ============================================================
 // 主実験（testing.B）: 書き込みパスの性能等価性
 //
