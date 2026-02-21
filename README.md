@@ -44,7 +44,7 @@ go-lab/
 - `topic:memory`: GC, Heap, Stack, Escape Analysis
 - `topic:cpu`: Scheduler, Goroutines, Syscall
 - `topic:data-structure`: Slice, Map, Channel internals
-- `topic:algorithm`: Computational complexity, Big-O, Sort/Searc
+- `topic:algorithm`: Computational complexity, Big-O, Sort/Search
 - `topic: io`: File, Descriptor, Syscall I/O, Stream
 
 ### Results (Outcome)
