@@ -45,7 +45,7 @@ go-lab/
 - `topic:cpu`: Scheduler, Goroutines, Syscall
 - `topic:data-structure`: Slice, Map, Channel internals
 - `topic:algorithm`: Computational complexity, Big-O, Sort/Search
-- `topic: io`: File, Descriptor, Syscall I/O, Stream
+- `topic:io`: File, Descriptor, Syscall I/O, Stream
 
 ### Results (Outcome)
 
