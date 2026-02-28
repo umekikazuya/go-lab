@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # inspect.sh — 公式Goコンテナイメージの内部調査スクリプト
-# Usage: docker run --rm golang:1.24 bash /work/inspect.sh
+# Usage: docker run --rm golang:1.26 bash /work/inspect.sh
 #   or:  docker build -t go-image-anatomy . && docker run --rm go-image-anatomy
 set -euo pipefail
 
