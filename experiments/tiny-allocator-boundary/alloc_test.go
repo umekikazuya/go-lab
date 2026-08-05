@@ -1,3 +1,11 @@
+// The race detector disables tiny-block packing outright (runtime/malloc.go:
+// "we disable tinyalloc when raceenabled"), and ASAN adds a redzone to every
+// allocation before the size < maxTinySize test, pushing every object off the
+// tiny path. Under either one the whole experiment measures the ordinary
+// mcache path instead, so it is excluded rather than given weaker assertions.
+
+//go:build !race && !asan
+
 package tinyallocator
 
 import (
